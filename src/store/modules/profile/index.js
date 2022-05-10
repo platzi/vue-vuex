@@ -23,11 +23,11 @@ const module = {
       console.log('update username action!', state.username, username)
       const user = await getUser(1)
       console.log(user)
-      console.log('status', rootState.status)
+      commit(COMMIT_UPDATE_USERNAME, user.username)
       if (state.username) {
         commit(COMMIT_SET_STATUS, 'active', { root: true })
+        console.log('status', rootState.status)
       }
-      commit(COMMIT_UPDATE_USERNAME, user.username)
     }
   },
 }
