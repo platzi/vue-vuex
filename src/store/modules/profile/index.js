@@ -2,6 +2,7 @@ import { COMMIT_UPDATE_USERNAME } from '@/common/mutation-types.js'
 import { getUser } from '@/api'
 
 const module = {
+  namespaced: true,
   state() {
     return {
       username: 'diana.nerd'

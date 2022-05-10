@@ -3,7 +3,7 @@ import { RouterView, RouterLink } from 'vue-router'
 import InputSearch from '@/components/InputSearch.vue'
 import ProfileCard from '@/components/ProfileCard.vue'
 import ChatItem from '@/components/ChatItem.vue'
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -32,8 +32,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['username']),
-    ...mapGetters(['firstName'])
+    ...mapGetters('profile', ['firstName'])
   },
 }
 </script>
