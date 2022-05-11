@@ -50,7 +50,7 @@ export default {
     <RouterLink to="/" class="channels-title">Canales <Icon icon="carbon:hashtag" /></RouterLink>
     <div class="channels">
       <ChatItem
-        v-for="channel in getChannels"
+        v-for="channel in getChannels(search)"
         :key="channel.id"
         :id="channel.id"
         :name="channel.name"
