@@ -3,7 +3,7 @@ const module = {
   state() {
     return {
       channels: [
-        { id: 1, name: 'Canal 1', messages: 1 },
+        { id: 1, name: 'Canal 1', messages: null },
         { id: 2, name: 'Canal 2', messages: null },
         { id: 3, name: 'Canal 3', messages: null },
         { id: 4, name: 'Canal 4', messages: null },
@@ -18,8 +18,7 @@ const module = {
             .toLowerCase()
             .includes(search.toLowerCase())
         ).map((channel) => {
-          const messages = rootGetters['messages/getUnreadMessages'](1);
-          console.log(messages)
+          const messages = rootGetters['messages/getUnreadMessages'](channel.id);
           return {
             ...channel,
             messages
