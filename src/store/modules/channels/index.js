@@ -3,16 +3,28 @@ const module = {
   state() {
     return {
       channels: [
-        { id: 1, name: 'Canal 1', messages: [] },
-        { id: 2, name: 'Canal 2', messages: [] },
-        { id: 3, name: 'Canal 3', messages: [] },
-        { id: 4, name: 'Canal 4', messages: [] },
+        { id: 1, name: 'Canal 1', messages: 1 },
+        { id: 2, name: 'Canal 2', messages: null },
+        { id: 3, name: 'Canal 3', messages: null },
+        { id: 4, name: 'Canal 4', messages: null },
       ]
     }
   },
   getters: {
-    getChannels: (state) => (search) => {
-      return state.channels.filter((channel) => channel.name.toLowerCase().includes(search.toLowerCase()))
+    getChannels: (state, getters, rootState, rootGetters) => (search) => {
+      return state.channels
+        .filter(
+          (channel) => channel.name
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        ).map((channel) => {
+          const messages = rootGetters['messages/getUnreadMessages'](1);
+          console.log(messages)
+          return {
+            ...channel,
+            messages
+          }
+        })
     }
   }
 }
