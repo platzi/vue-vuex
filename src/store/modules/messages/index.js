@@ -40,6 +40,14 @@ const module = {
           read: false
 >>>>>>> 17-messages
         },
+        {
+          id: 4,
+          author: 1,
+          message: 'Mi mensaje',
+          timestamp: new Date().toLocaleTimeString(),
+          read: false,
+          channelId: 2
+        },
       ]
     }
   },

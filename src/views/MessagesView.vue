@@ -19,9 +19,10 @@ export default {
   },
   computed: {
     ...mapGetters('messages', ['getMessages']),
+    ...mapGetters('contacts', ['getContactById']),
     messagesView() {
       return this.getMessages(this.channelId)?.map((message) => {
-        const author = this.people.find((p) => p.id === message.author)
+        const author = this.getContactById(message.author)
         if (!author) return message;
         return {
           ...message,
